@@ -1,0 +1,238 @@
+%Copyright 2014 Jean-Philippe Eisenbarth
+%This program is free software: you can 
+%redistribute it and/or modify it under the terms of the GNU General Public 
+%License as published by the Free Software Foundation, either version 3 of the 
+%License, or (at your option) any later version.
+%This program is distributed in the hope that it will be useful,but WITHOUT ANY 
+%WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+%PARTICULAR PURPOSE. See the GNU General Public License for more details.
+%You should have received a copy of the GNU General Public License along with 
+%this program.  If not, see <http://www.gnu.org/licenses/>.
+
+%Based on the code of Yiannis Lazarides
+%http://tex.stackexchange.com/questions/42602/software-requirements-specification-with-latex
+%http://tex.stackexchange.com/users/963/yiannis-lazarides
+%Also based on the template of Karl E. Wiegers
+%http://www.se.rit.edu/~emad/teaching/slides/srs_template_sep14.pdf
+%http://karlwiegers.com
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[toc,acronym,section=section]{glossaries}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+% to suppress glossaries page break
+
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Cahier des Charges},    % title
+    pdfauthor={Jean-Philippe Eisenbarth},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=purple,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{0.1 }
+\date{}
+%\title{%
+
+%}
+\usepackage{hyperref}
+\newcounter{reqcounter}
+\newcounter{reqfcounter}
+\newtheorem{req}{Besoin}
+
+\newenvironment{reqs}[1]{
+\refstepcounter{reqcounter}
+\textbf{Requirement \thereqcounter} \space #1\\
+\begin{em}}{\end{em}\vspace{1em}}
+
+\newenvironment{reqf}[1]{
+\refstepcounter{reqfcounter}
+\textbf{Requirement \thereqfcounter} \space #1\\
+\begin{enumerate}}{\end{enumerate}\vspace{1em}}
+
+\makeglossaries
+
+\newglossaryentry{latex}
+{
+        name=latex,
+        description={Is a mark up language specially suited for 
+scientific documents}
+}
+\newglossaryentry{livret}
+{
+        name={Livret de l'élève},
+        description={Il contient toutes les informations concernant la scolarité des étudiants}
+}
+
+\begin{document}
+\renewcommand*{\glsclearpage}{}
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+        \Huge{Cahier des charges}\\
+        \vspace{1.9cm}
+        pour\\
+        \vspace{1.9cm}
+        Le projet de MOCI\\
+        \vspace{1.9cm}
+        \LARGE{Version \myversion draft}\\
+        \vspace{1.9cm}
+        Préparé par $<$author$>$\\
+        \vspace{1.9cm}
+        $<$Organization$>$\\
+        \vspace{1.9cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+\tableofcontents
+
+\chapter*{Historique}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+	    Name & Date & Reason for changes & Version\\
+        \hline
+	    Francois Charoy & 29/6/2017 & initial & 0.1\\
+        \hline
+	    Martine Gautier & 30/6/2017 & orthographe & 0.1.1\\
+        \hline
+        Brigitte Wrobel-Dautcourt & 22/8/2017 & ponctuation, typo, orthographe, grammaire... & 0.1.2\\
+        \hline
+        Martine Gautier & 07/09/2017 & ponctuation, typo, orthographe, grammaire, ... & 0.1.3\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\chapter{Introduction}
+Ce cahier des charges est réalisé dans le cadre du cours de TELECOM Nancy  et fait référence aux livres suivants~\cite{Sommerville:2010:SE:1841764,Pohl:2010:REF:1869735,Rumbaugh:2004:UML:993859}.
+\section{Objectif}
+$<$Identifiez le produit dont le cahier des charges va être décrit dans ce document. Indiquez ce que couvre le produit, en particulier si le cahier des charges ne concerne qu'une partie d'un système.$>$
+
+\section{Conventions}
+$<$Décrivez les conventions typographiques et les standards utilisés.$>$
+
+\section{Description du projet}
+$<$Donnez une description rapide du logiciel spécifié, son but, les objectifs métiers, les gains attendus.$>$
+\newacronym{ade}{ADE}{ADE est le logiciel d'emploi du temps de l'université de Lorraine}
+\newacronym{API}{API}{Application Programming Interface}
+
+L'emploi du temps des étudiants est accessible grâce aux \acrshort{API} d'\acrshort{ade}.
+
+Les informations concernant les règles d'absence se trouvent dans le \Gls{livret}.
+
+\section{Contexte et origine}
+$<$Décrivez le contexte dans lequel va fonctionner le logiciel et éventuellement ce qu'il va remplacer ou compléter. Décrivez également rapidement les relations avec les autres systèmes de l'environnement.$>$
+
+\section{Principales fonctionnalités}
+$<$Indiquez ici les fonctionnalités principales du produit ainsi que les acteurs et leurs caractéristiques. $>$
+
+\section{Les acteurs}
+$<$Décrivez les différents acteurs concernés par le système aussi bien pour l'utilisation que pour l'exploitation.$>$
+
+\section{Environnement opérationnel}
+$<$Décrivez le contexte dans lequel le logiciel va s'exécuter.$>$
+
+\section{Contraintes d'implantation et de conception}
+$<$Décrivez ce qui peut avoir un impact sur la mise en {\oe}uvre, comme des questions de réglementation, de support d'exécution, de limites techniques, d'outils à utiliser, de langage, de système.$>$
+
+\section{Hypothèses et dépendances}
+
+$<$Quelles sont les dépendances et les hypothèses qui vont orienter la construction du logiciel ?$>$
+
+
+\chapter{Besoins utilisateurs}
+
+\section{Besoins fonctionnels}
+$<$Décrivez sous forme de liste les besoins fonctionnels de l'application. Chaque besoin doit être formaté avec le modèle indiqué et surtout être numéroté.$>$
+
+
+\begin{reqs}{Le système doit permettre d'éditer la liste des absences pour un étudiant.}
+Le système doit permettre de retrouver toutes les absences d'un étudiant et de présenter une liste incluant les absences justifiées, le motif et les absences non justifiées.
+\end{reqs}
+
+\begin{reqs}{Le système doit permettre à un enseignant de saisir les absences du groupe d'étudiants avec qui il a cours.}
+Le système doit permettre de retrouver toutes les absences d'un étudiant et de présenter une liste incluant les absences justifiées, le motif et les absences non justifiées.
+\end{reqs}
+
+\section{Besoins non fonctionnels}
+$<$Décrivez sous forme de liste les besoins non fonctionnels de l'application. Chaque besoin doit être formaté avec le modèle indiqué et surtout être numéroté. Pour chaque besoin non fonctionnel, vous devez indiquer comment il sera vérifié.$>$
+
+\subsection{Performance}
+\begin{reqs}{Le temps de réponse pour les actions de l'utilisateur doit être inférieur à 100ms dans 99\% des cas.}
+Le système doit être réactif et ne pas ralentir le travail de l'utilisateur. Des tests de performance seront mis en place pour vérifier ce besoin ainsi qu'une solution de monitoring pour vérifier que la performance attendue est bien atteinte.
+\end{reqs}
+
+\subsection{Sureté}
+
+\subsection{Sécurité}
+
+\subsection{Autres qualités}
+
+\section{Besoins liés au domaine}
+
+
+\chapter{Besoins système}
+
+\section{Besoins système fonctionnels}
+$<$Pour chaque besoin fonctionnel, donnez une description détaillée de son fonctionnement permettant de comprendre plus précisément son fonctionnement. La numérotation doit correspondre aux besoins utilisateurs.$>$
+
+
+\begin{reqf}{Le système doit permettre d'éditer la liste des absences pour un étudiant.}
+\item L'utilisateur peut rechercher un étudiant à partir de son nom ou de son numéro INE. 
+\item La recherche est facilitée par un mécanisme d'auto-complétion. 
+\item La liste des absences s'affiche à l'écran : date, motif, justification.
+\item Le total des absences justifiées et non justifiées est également affiché.
+\end{reqf}
+
+\section{Besoins système non fonctionnels}
+$<$Certains besoins non fonctionnels peuvent nécessiter une description plus précise mais ce n'est pas obligatoire.$>$
+
+
+\section{Interfaces utilisateurs}
+$<$Ici vous pouvez donner des éléments relatifs aux interactions avec l'utilisateur (écrans, appareils).$>$
+
+\chapter{Appendices}
+\section{Appendice A: Glossaire}
+%see https://en.wikibooks.org/wiki/LaTeX/Glossary
+\printglossaries
+
+\section{Appendice B: Modèles d'analyse}
+$<$Ajoutez ici les diagrammes et modèles qui peuvent servir à la compréhension du cahier des charges.$>$
+
+\subsubsection{Modèle de données}
+$<$Diagramme entité association ou diagramme de classe correspondant aux informations nécessaires à l'application.$>$
+
+\begin{figure}
+\includegraphics[width=\textwidth]{"AbsencesClasses"}
+\caption{Exemple de diagramme de classe}
+\end{figure}
+\subsubsection{Dictionnaire de données}
+$<$Le dictionnaire de données est un tableau présentant pour chaque donnée son nom, son type et sa définition.$>$
+
+\begin{center}
+\begin{tabular}{ |l|l|l| } 
+ \hline
+ Nom & Type  & Description \\ 
+ \hline\hline
+ email & text & adresse de courrier électronique des utilisateurs \\ 
+ \hline
+ password & text & mot de passe pour l'authentification \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
