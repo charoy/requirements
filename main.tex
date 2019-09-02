@@ -80,8 +80,6 @@ scientific documents}
     \begin{bfseries}
         \Huge{Cahier des charges}\\
         \vspace{1.9cm}
-        pour\\
-        \vspace{1.9cm}
         Le projet de MOCI\\
         \vspace{1.9cm}
         \LARGE{Version \myversion draft}\\
@@ -103,6 +101,8 @@ scientific documents}
         \hline
 	    Name & Date & Reason for changes & Version\\
         \hline
+	    Francois Charoy & 29/8/2019 & initial & 0.1\\
+        \hline
 	    Francois Charoy & 29/6/2017 & initial & 0.1\\
         \hline
 	    Martine Gautier & 30/6/2017 & orthographe & 0.1.1\\
@@ -120,19 +120,20 @@ Ce cahier des charges est réalisé dans le cadre du cours de TELECOM Nancy  et 
 $<$Identifiez le produit dont le cahier des charges va être décrit dans ce document. Indiquez ce que couvre le produit, en particulier si le cahier des charges ne concerne qu'une partie d'un système.$>$
 
 \section{Conventions}
-$<$Décrivez les conventions typographiques et les standards utilisés.$>$
+$<$Décrivez les conventions typographiques et les standards utilisés s'il vous en avez définie$>$
 
 \section{Description du projet}
 $<$Donnez une description rapide du logiciel spécifié, son but, les objectifs métiers, les gains attendus.$>$
+
+
+\section{Contexte et origine}
+$<$Décrivez le contexte dans lequel va fonctionner le logiciel et éventuellement ce qu'il va remplacer ou compléter. Décrivez également rapidement les relations avec les autres systèmes de l'environnement.$>$
 \newacronym{ade}{ADE}{ADE est le logiciel d'emploi du temps de l'université de Lorraine}
 \newacronym{API}{API}{Application Programming Interface}
 
 L'emploi du temps des étudiants est accessible grâce aux \acrshort{API} d'\acrshort{ade}.
 
 Les informations concernant les règles d'absence se trouvent dans le \Gls{livret}.
-
-\section{Contexte et origine}
-$<$Décrivez le contexte dans lequel va fonctionner le logiciel et éventuellement ce qu'il va remplacer ou compléter. Décrivez également rapidement les relations avec les autres systèmes de l'environnement.$>$
 
 \section{Principales fonctionnalités}
 $<$Indiquez ici les fonctionnalités principales du produit ainsi que les acteurs et leurs caractéristiques. $>$
@@ -141,7 +142,7 @@ $<$Indiquez ici les fonctionnalités principales du produit ainsi que les acteur
 $<$Décrivez les différents acteurs concernés par le système aussi bien pour l'utilisation que pour l'exploitation.$>$
 
 \section{Environnement opérationnel}
-$<$Décrivez le contexte dans lequel le logiciel va s'exécuter.$>$
+$<$Décrivez le contexte dans lequel le logiciel va s'exécuter, où se trouvent les serveurs, qui va les opérer.$>$
 
 \section{Contraintes d'implantation et de conception}
 $<$Décrivez ce qui peut avoir un impact sur la mise en {\oe}uvre, comme des questions de réglementation, de support d'exécution, de limites techniques, d'outils à utiliser, de langage, de système.$>$
@@ -174,8 +175,13 @@ Le système doit être réactif et ne pas ralentir le travail de l'utilisateur. 
 \end{reqs}
 
 \subsection{Sureté}
+\begin{reqs}{Le système doit pouvoir être mis à jour sans être interrompu}
+Les mises à jour logicielles doivent pouvoir être effectuées sans interruption du service
+\end{reqs}
 
 \subsection{Sécurité}
+\begin{reqs}{Le système doit fournir un moyen d'authentification à 2 facteurs}
+\end{reqs}
 
 \subsection{Autres qualités}
 
